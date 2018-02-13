@@ -1,0 +1,21 @@
+builds:
+  - main: main.go
+    binary: system-profile-metrics
+    goos:
+      - windows
+      - darwin
+      - linux
+      - freebsd
+      - openbsd
+      - netbsd
+    goarch:
+      - amd64
+      - 386
+      - arm
+
+archive:
+  format: tar.gz
+  replacements:
+    darwin: macOS
+  files:
+    - LICENSE

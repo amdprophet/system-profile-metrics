@@ -18,4 +18,19 @@ archive:
   replacements:
     darwin: macOS
   files:
-    - LICENSE
+    - LICENSE.txt
+    - README.md
+    - CHANGELOG.md
+
+release:
+  draft: true
+  prerelease: true
+
+  # You can change the name of the GitHub release.
+  # This is parsed with the Go template engine and the following variables
+  # are available:
+  # - ProjectName
+  # - Tag
+  # - Version (Git tag without `v` prefix)
+  # Default is ``
+  #name_template: "{{.ProjectName}}-v{{.Version}}"

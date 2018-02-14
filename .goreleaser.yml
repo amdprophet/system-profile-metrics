@@ -23,6 +23,10 @@ builds:
       - mipsle
       - mips64
       - mips64le
+    goarm:
+      - 5
+      - 6
+      - 7
     ignore:
       # TODO: add freebsd/arm support to gopsutil
       - goos: freebsd
@@ -38,9 +42,9 @@ builds:
         goarch: mips64le
       
 archive:
-  format: tar.gz
-  replacements:
-    darwin: macOS
+  format:
+    - binary
+    - tar.gz
   files:
     - LICENSE.txt
     - README.md

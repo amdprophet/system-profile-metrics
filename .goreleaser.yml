@@ -24,8 +24,12 @@ builds:
       - mips64
       - mips64le
     ignore:
-      - goos: freebsd # TODO: fix up gopsutil to work with freebsd/arm
+      # TODO: add freebsd/arm support to gopsutil
+      - goos: freebsd
         goarch: arm
+      # TODO: add linux/ppc64 support to gopsutil
+      - goos: linux
+        goarch: ppc64
       
 archive:
   format: tar.gz

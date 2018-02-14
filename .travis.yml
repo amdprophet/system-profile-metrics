@@ -1,1 +1,31 @@
-go get github.com/goreleaser/goreleaser
+language: go
+go:
+- 1.9.x
+branches:
+  only:
+  - master
+  - "/\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+stages:
+- name: test
+- name: deploy
+  if: tag IS present
+install:
+- go get gopkg.in/alecthomas/gometalinter.v1
+- go get github.com/gordonklaus/ineffassign
+- go get github.com/jgautheron/goconst/cmd/goconst
+- go get github.com/kisielk/errcheck
+- go get github.com/golang/lint/golint
+- go get github.com/golang/dep/cmd/dep
+- dep ensure -v -vendor-only
+script:
+- gometalinter.v1 --vendor --disable-all --enable=vet --enable=golint --enable=ineffassign
+  --enable=goconst --tests ./...
+jobs:
+  include:
+  - stage: deploy
+    env: secure: mwUhxYirjUIGXPky3wXhZd9cyrZkC7MWk/7Opy27ZRdDfPUGnCGTocO7iR5oGCS0QoWyvK8xCaLj2wL4qB9IkZOUJJeyt/e4Zik7TzKM/MDV0sVLIO0wRk3m2sNHyneUicpK38FtrMJMh8+iofgoiKu9lfneCiuG2SEmTfBlVAUAkYEBKjmrCFxmIVAS0H0DNmLZQ8L5JGG5qT2PvPdW3cG7GjCl8Xxf4R6IrGMMtZNn4IigmuCtHAURKxleKKHjjbdp4WZ7N5Y2gmdth7bSKaK0m6h9vWnTHbIjOoau1jJCHC/dNYHEHsrW+lwoVZpfC0/NFUciBm8e/zWgeEi/KEgJZt2D6vxiircjuy1Wk8d0yW1k1IKHvmyxT/dwtlhcBgBOcIc8/uGPY+61+MKQ1PhvO/UDysYCIUsjInQPasnQkm2G6vQ8qcjZ06mFMAz84lSQyY2m7hvRyx1l76bRYGZTW8/lY63nl3El9k/hgoVB3OUXTu0tWgFhJgNWXMVuvwyJrVv7jAHGPqbZQAKlK/NyVR5MuQk6RkRl8IPzpM1GQ5Hg71zOlNPDciUpdDdumfpf+6CY7USP3t/HktJVkF/l0qO8Jql1TDDDndPOwINcr10s3S2BL8NJ8hukDELoPYlfJ82M0iV+31o2D3q0Ilst5lp8uXQlduBY7OobQUA=
+    script: skip
+    deploy:
+    - provider: script
+      skip_cleanup: true
+      script: goreleaser

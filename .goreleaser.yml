@@ -2,17 +2,28 @@ builds:
   - main: main.go
     binary: system-profile-metrics
     goos:
-      - windows
+      #-android
       - darwin
-      - linux
+      - dragonfly
       - freebsd
-      - openbsd
+      - linux
       - netbsd
+      #- openbsd # TODO: fix up gopsutil to not require CGO
+      #- plan9
+      - solaris
+      - windows
     goarch:
       - amd64
       - 386
       - arm
-
+      - arm64
+      - ppc64
+      - ppc64le
+      - mips
+      - mipsle
+      - mips64
+      - mips64le
+      
 archive:
   format: tar.gz
   replacements:

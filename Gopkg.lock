@@ -17,15 +17,40 @@
   version = "v1.2.1"
 
 [[projects]]
+  name = "github.com/inconshreveable/mousetrap"
+  packages = ["."]
+  revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
+  version = "v1.0"
+
+[[projects]]
   name = "github.com/shirou/gopsutil"
   packages = [
     "cpu",
     "host",
     "internal/common",
+    "mem",
+    "net",
     "process"
   ]
   revision = "c432be29ccce470088d07eea25b3ea7e68a8afbb"
   version = "v2.18.01"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/shirou/w32"
+  packages = ["."]
+  revision = "bb4de0191aa41b5507caa14b0650cdbddcd9280b"
+
+[[projects]]
+  name = "github.com/spf13/cobra"
+  packages = ["."]
+  revision = "be77323fc05148ef091e83b3866c0d47c8e74a8b"
+
+[[projects]]
+  name = "github.com/spf13/pflag"
+  packages = ["."]
+  revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -39,6 +64,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "941e55fa97341de07783d312cf476d19d79ba5d87daf033fe44b4ffb7d81158b"
+  inputs-digest = "9c3f53735ca9074b7bb399b1fac616ad7098a64ad1b0da1f83343919c285da78"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -33,6 +33,9 @@ builds:
         # TODO: add linux/mips64 support to gopsutil
       - goos: linux
         goarch: mips64
+        # TODO: add linux/mips64le support to gopsutil
+      - goos: linux
+        goarch: mips64le
       
 archive:
   format: tar.gz
